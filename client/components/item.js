@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const Item = () => {
-  return <button className='item'>Banana Cupcake</button>;
+const Item = ({ index, title }) => {
+  return <button className='item'>{title}</button>;
 };
 
 export default Item;
