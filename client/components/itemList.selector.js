@@ -1,3 +1,3 @@
 export const itemListSelector = (state) => ({
-  recipes: state.recipes.recipes,
+  recipes: state.recipes.recipesList,
 });

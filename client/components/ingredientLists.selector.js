@@ -1,4 +1,4 @@
 export const ingredientListsSelector = (state) => ({
-  recipes: state.recipes.recipes,
+  recipes: state.recipes.recipesList,
   activeId: state.recipes.activeId,
 });

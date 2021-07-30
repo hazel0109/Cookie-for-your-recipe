@@ -111,7 +111,7 @@ a {
   text-align: center;
   padding: 12px;
   margin: 8px 0;
-  width: 190px;
+  width: 200px;
   border: 1px solid $accent-font-color;
   font-weight: bold;
   border-radius: 20px;
@@ -183,7 +183,7 @@ a {
 .mainRecipe {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   background-color: $white-color;
   padding: 30px 60px;
   width: 700px;
@@ -197,7 +197,7 @@ a {
 .recipe {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   margin: 12px 0;
 }
 

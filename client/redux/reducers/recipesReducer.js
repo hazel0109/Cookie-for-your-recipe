@@ -1,7 +1,7 @@
 import * as types from '../action/actionTypes';
 
 const initialState = {
-  recipes: [],
+  recipesList: [],
   activeId: null,
 };
 
@@ -10,7 +10,7 @@ export const RecipesReducer = (state = initialState, action) => {
     case types.RECIPE_GET: {
       return {
         ...state,
-        recipes: action.payload,
+        recipesList: action.payload,
         activeId: action.payload[0]._id,
       };
     }
@@ -19,7 +19,13 @@ export const RecipesReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: false,
-        recipes: state.recipes.push(action.payload),
+        recipesList: action.payload,
+      };
+    }
+    case types.RECIPE_ACTIVEID_SWITCH: {
+      return {
+        ...state,
+        activeId: action.payload,
       };
     }
     default: {

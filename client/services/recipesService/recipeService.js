@@ -9,9 +9,13 @@ class RecipeService {
     }
   }
 
-  static async postRecipes() {
+  static async postRecipes(url, data) {
     try {
-      let result = await axios.post();
+      // debugger;
+      let result = await axios.post(url, data);
+      // debugger;
+      console.log(result);
+      return result.data;
     } catch (err) {
       console.log(err);
     }

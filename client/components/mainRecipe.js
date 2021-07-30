@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
+import { useSelector } from 'react-redux';
+import { newRecipeIngredientspdate } from '../redux/action/actions';
 import Recipe from './recipe';
+import { ingredientListsSelector } from './ingredientLists.selector';
 
-const inside = `this is how we are going to write the recipe. how much width would look
-good on this? hahahahah I'm sleepy. I don't think I can touch the
-backend at all. this is how we are going to write the recipe. how much
-width would look good on this? hahahahah I'm sleepy. I don't think I can
-touch the backend at all.`;
-const recipeList = [
-  inside,
-  inside,
-  inside,
-  inside,
-  inside,
-  inside,
-  inside,
-  inside,
-];
-
-const RecipeMaker = () => {
-  return recipeList.map((recipe, idx) => {
-    return <Recipe key={idx} id={idx} index={idx + 1} recipe={recipe} />;
+const RecipeMaker = (instructions) => {
+  return instructions.map((step, idx) => {
+    return <Recipe key={idx} id={idx} index={idx + 1} step={step} />;
   });
 };
 
 const MainRecipe = () => {
-  return <ul className='mainRecipe'>{RecipeMaker()}</ul>;
+  const { recipes, activeId } = useSelector(ingredientListsSelector);
+  const recipe = recipes.find((recipe) => recipe._id === activeId);
+
+  return (
+    <ul className='mainRecipe'>
+      {RecipeMaker(recipe ? recipe.instructions : [])}
+    </ul>
+  );
 };
 
 export default MainRecipe;
