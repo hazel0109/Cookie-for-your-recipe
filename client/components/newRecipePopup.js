@@ -19,13 +19,13 @@ const NewRecipePopup = (props) => {
     dispatch(newRecipeTitleUpdate(title));
   }, [title]);
 
-  // useEffect(async () => {
-  //   const result = await RecipeService.getRecipes(
-  //     'http://localhost:3000/recipes'
-  //   );
-  //   console.log(result);
-  //   dispatch(populateRecipes(result));
-  // }, []);
+  useEffect(async () => {
+    const result = await RecipeService.getRecipes(
+      'http://localhost:3000/recipes'
+    );
+    console.log(result);
+    dispatch(populateRecipes(result));
+  }, []);
 
   //use async when I need to call to badkend
   const onClickHandler = async () => {
