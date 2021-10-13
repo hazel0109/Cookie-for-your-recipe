@@ -1,12 +1,7 @@
-cooking recipe app v.1.0
-
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
-  <a href="https://github.com/hazel0109/Cookie-for-your-recipe">
-    Cookie
-  </a>
-</p>
+<h1 align="center">Cookie</h1>
+<p align="center">cooking recipe app v.1.0</p>
 
 <!-- GETTING STARTED -->
 
@@ -33,6 +28,12 @@ DB_HOST=your.db.here
 
 Simply add your favorite recipes and have your own recipe book:
 
-- Find the recipe name and click it to see the recipe ![recipe1](Recipe1.png) ![recipe2](Recipe2.png)
+- Find the recipe name and click it to see the recipe <br />
 
-- Add your own recipe ![AddRecipe](AddRecipe.png)
+![recipe1](client/img/Recipe1.png) <br /> <br />
+
+![recipe2](client/img/Recipe2.png) <br /><br />
+
+- Add your own recipe <br />
+
+![AddRecipe](client/img/AddRecipe.png)
