@@ -1,0 +1,193 @@
+.popupBgd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparentize($black-color, 0.6);
+  width: 1440px;
+  height: 825px;
+}
+
+.popup_container {
+  position: relative;
+  margin: auto;
+  top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-color;
+  width: 1100px;
+  height: 720px;
+  border-radius: 20px;
+  padding: 20px 0;
+}
+
+.popup_btns {
+  width: 1060px;
+  margin-bottom: 20px;
+}
+
+.popup_cancelBtn {
+  position: relative;
+  left: 15px;
+  width: 190px;
+  padding: 9px;
+  border: 2px solid $primary-color;
+  background-color: $background-color;
+  color: $font-color;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.popup_cancelBtn:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.popup_addBtn {
+  position: relative;
+  left: 660px;
+  width: 190px;
+  padding: 12px;
+  background-color: $primary-color;
+  color: $font-color;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.popup_addBtn:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.add_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
+  margin: 0 40px 20px 40px;
+}
+
+.title_label {
+  font-size: $font-logo;
+  color: $dark-second-color;
+  font-weight: bold;
+}
+
+.input_title {
+  width: 560px;
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 20px;
+  height: 40px;
+  outline: none;
+  font-size: $font-large;
+}
+
+.popup_main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1070px;
+}
+
+.popup_sidebar {
+  width: 5px;
+  height: 50px;
+  background-color: $accent-font-color;
+}
+
+.add_ingList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  background-color: $white-color;
+  width: 420px;
+  height: 540px;
+  border: 3px solid $primary-color;
+  border-radius: 20px;
+  font-size: $font-medium;
+  overflow-y: auto;
+}
+
+.add_ingLine {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5px 15px;
+  font-size: $font-small;
+  width: 400px;
+}
+
+#title_ingredient {
+  margin: 0 75px;
+}
+
+.add_recipeList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px;
+  background-color: $white-color;
+  width: 600px;
+  height: 540px;
+  border: 3px solid $primary-color;
+  border-radius: 20px;
+  font-size: $font-medium;
+  overflow-y: auto;
+}
+
+.add_recipe {
+  margin: 5px 20px;
+}
+
+.input_recipe {
+  display: block;
+  width: 520px;
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 10px;
+  min-height: 40px;
+  line-height: 20px;
+  outline: none;
+  font-size: $font-medium;
+}
+
+.input_recipe[contentEditable]:empty::before {
+  content: 'Add next recipe step';
+  color: gray;
+}
+
+.input_ingredient {
+  width: 210px;
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 10px;
+  height: 32px;
+  outline: none;
+  font-size: $font-medium;
+}
+
+.input_quantity {
+  width: 80px;
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 10px;
+  height: 32px;
+  outline: none;
+  text-align: right;
+}
+
+.input_measurement {
+  width: 80px;
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 10px;
+  height: 32px;
+  outline: none;
+  text-align: right;
+}

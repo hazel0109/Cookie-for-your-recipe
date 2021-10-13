@@ -1,0 +1,30 @@
+.mainRecipe {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: $white-color;
+  padding: 30px 60px;
+  width: 700px;
+  height: 700px;
+  border: 4px solid mistyrose;
+  border-radius: 20px;
+  font-size: $font-medium;
+  overflow-y: auto;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.recipe_process {
+  font-size: $font-logo;
+  color: $dark-second-color;
+  margin-right: 60px;
+}
+
+.recipe_content {
+  font-size: $font-medium;
+}

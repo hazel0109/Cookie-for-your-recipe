@@ -16,7 +16,6 @@ const MainContainer = () => {
     const result = await RecipeService.getRecipes(
       'http://localhost:3000/recipes'
     );
-    // console.log(result);
     dispatch(populateRecipes(result));
   }, []);
 
