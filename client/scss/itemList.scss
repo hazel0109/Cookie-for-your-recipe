@@ -1,0 +1,48 @@
+.itemList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white-color;
+  width: 18rem;
+  height: 88vh;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 1rem 0.6rem;
+  font-size: $font-medium;
+  overflow-y: auto;
+}
+
+.new_itemBtn {
+  margin-bottom: 0.8rem;
+  width: 9.4rem;
+  padding: 0.6rem;
+  background-color: $primary-color;
+  color: $font-color;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.new_itemBtn:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.item {
+  text-align: center;
+  padding: 0.6rem;
+  margin: 0.3rem 0;
+  width: 9.4rem;
+  border: 1px solid $accent-font-color;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.item:hover {
+  background-color: $accent-color;
+  color: $white-color;
+}
+
+.item:focus {
+  background-color: $accent-color;
+  color: $white-color;
+}
