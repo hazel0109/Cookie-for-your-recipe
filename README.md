@@ -16,11 +16,11 @@
    ```
 3. create an .env file in the root directory filling in your personal DB_host (MongoDB):
 
-```
-# Database
-DB_HOST=your.db.here
+   ```
+   # Database
+   DB_HOST=your.db.here
 
-```
+   ```
 
 <!-- USAGE EXAMPLES -->
 
