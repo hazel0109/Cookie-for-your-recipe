@@ -3,9 +3,9 @@
   flex-direction: column;
   align-items: flex-start;
   background-color: $white-color;
-  padding: 30px 60px;
-  width: 700px;
-  height: 700px;
+  padding: 1.2rem 2rem;
+  width: 32rem;
+  height: 88vh;
   border: 4px solid mistyrose;
   border-radius: 20px;
   font-size: $font-medium;
@@ -16,13 +16,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 12px 0;
+  margin: 0.8rem 0;
 }
 
 .recipe_process {
   font-size: $font-logo;
   color: $dark-second-color;
-  margin-right: 60px;
+  margin-right: 2rem;
 }
 
 .recipe_content {

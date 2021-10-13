@@ -3,34 +3,34 @@
   top: 0;
   left: 0;
   background-color: transparentize($black-color, 0.6);
-  width: 1440px;
-  height: 825px;
+  width: 100%;
+  height: 100%;
 }
 
 .popup_container {
   position: relative;
   margin: auto;
-  top: 35px;
+  top: 2.1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $background-color;
-  width: 1100px;
-  height: 720px;
+  width: 84vw;
+  height: 90vh;
   border-radius: 20px;
-  padding: 20px 0;
+  padding: 1rem 0;
 }
 
 .popup_btns {
-  width: 1060px;
-  margin-bottom: 20px;
+  width: 49rem;
+  margin-bottom: 1rem;
 }
 
 .popup_cancelBtn {
   position: relative;
-  left: 15px;
-  width: 190px;
-  padding: 9px;
+  left: 0.8rem;
+  width: 9rem;
+  padding: 0.5rem;
   border: 2px solid $primary-color;
   background-color: $background-color;
   color: $font-color;
@@ -45,9 +45,9 @@
 
 .popup_addBtn {
   position: relative;
-  left: 660px;
-  width: 190px;
-  padding: 12px;
+  left: 30rem;
+  width: 9rem;
+  padding: 0.5rem;
   background-color: $primary-color;
   color: $font-color;
   font-weight: bold;
@@ -63,23 +63,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 900px;
-  margin: 0 40px 20px 40px;
+  width: 46rem;
+  margin: 0 0 1.2rem;
 }
 
 .title_label {
   font-size: $font-logo;
   color: $dark-second-color;
   font-weight: bold;
+  margin: 0 2rem;
 }
 
 .input_title {
-  width: 560px;
+  width: 26rem;
   overflow: hidden;
   border: 2px solid $accent-font-color;
   border-radius: 20px;
-  padding: 20px;
-  height: 40px;
+  padding: 1rem;
+  height: 1.5rem;
   outline: none;
   font-size: $font-large;
 }
@@ -88,12 +89,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 1070px;
+  width: 50rem;
 }
 
 .popup_sidebar {
-  width: 5px;
-  height: 50px;
+  width: 0.2rem;
+  height: 2.5rem;
   background-color: $accent-font-color;
 }
 
@@ -101,10 +102,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 10px;
+  padding: 1rem 0.5rem;
   background-color: $white-color;
-  width: 420px;
-  height: 540px;
+  width: 20rem;
+  height: 25rem;
   border: 3px solid $primary-color;
   border-radius: 20px;
   font-size: $font-medium;
@@ -114,9 +115,9 @@
 .add_ingLine {
   display: flex;
   justify-content: space-evenly;
-  margin: 5px 15px;
+  margin: 0.2rem 0.8rem;
   font-size: $font-small;
-  width: 400px;
+  width: 18rem;
 }
 
 #title_ingredient {
@@ -127,10 +128,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 20px;
+  padding: 1rem;
   background-color: $white-color;
-  width: 600px;
-  height: 540px;
+  width: 27rem;
+  height: 25rem;
   border: 3px solid $primary-color;
   border-radius: 20px;
   font-size: $font-medium;
@@ -138,16 +139,16 @@
 }
 
 .add_recipe {
-  margin: 5px 20px;
+  margin: 0.2rem 0.8rem;
 }
 
 .input_recipe {
   display: block;
-  width: 520px;
+  width: 25rem;
   overflow: hidden;
   border: 2px solid $accent-font-color;
   border-radius: 20px;
-  padding: 10px;
+  padding: 0.7rem;
   min-height: 40px;
   line-height: 20px;
   outline: none;
@@ -160,34 +161,34 @@
 }
 
 .input_ingredient {
-  width: 210px;
+  width: 9rem;
   overflow: hidden;
   border: 2px solid $accent-font-color;
   border-radius: 20px;
   padding: 10px;
-  height: 32px;
+  height: 1.5rem;
   outline: none;
   font-size: $font-medium;
 }
 
 .input_quantity {
-  width: 80px;
+  width: 4rem;
   overflow: hidden;
   border: 2px solid $accent-font-color;
   border-radius: 20px;
   padding: 10px;
-  height: 32px;
+  height: 1.5rem;
   outline: none;
   text-align: right;
 }
 
 .input_measurement {
-  width: 80px;
+  width: 4rem;
   overflow: hidden;
   border: 2px solid $accent-font-color;
   border-radius: 20px;
   padding: 10px;
-  height: 32px;
+  height: 1.5rem;
   outline: none;
   text-align: right;
 }
