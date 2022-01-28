@@ -1,78 +1,96 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import AddIngredient from './addIngredient';
 import { newRecipeIngredientspdate } from '../redux/action/actions';
 
-const AddIngredientLists = () => {
-  const [ingredients, setIngredients] = useState([]);
-  const [addArray, setAddArray] = useState([]);
+const AddIngredientLists = memo(() => {
+  const initList = [
+    {
+      id: 1,
+      ingredient: '',
+      quantity: '',
+      measurement: '',
+    },
+    {
+      id: 2,
+      ingredient: '',
+      quantity: '',
+      measurement: '',
+    },
+    {
+      id: 3,
+      ingredient: '',
+      quantity: '',
+      measurement: '',
+    },
+  ];
+  const [ingredients, setIngredients] = useState(initList);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(newRecipeIngredientspdate(ingredients));
+    const list = ingredients.filter((item) => item.ingredient !== '');
+    dispatch(newRecipeIngredientspdate(list));
+    const prev = { ...ingredients[ingredients.length - 2] };
+    const last = { ...ingredients[ingredients.length - 1] };
+    if (last.ingredient !== '') {
+      addRow(last.id);
+    }
+    if (prev.ingredient === '' && prev.id > 2) {
+      removeRow();
+    }
   }, [ingredients]);
 
-  const onChangeCallback = (name, value, id) => {
-    const copy = [...ingredients];
-    const ingredientIndex = ingredients.findIndex(
-      (ingredient) => ingredient.id === id
-    );
-    const ingredient =
-      ingredientIndex >= 0
-        ? {
-            ...ingredients[ingredientIndex],
-            [name]: value,
+  const addRow = (itemId) => {
+    setIngredients((ingredients) => [
+      ...ingredients,
+      { id: itemId + 1, ingredient: '', quantity: '', measurement: '' },
+    ]);
+  };
+
+  const removeRow = () => {
+    setIngredients((ingredients) => {
+      const copy = [...ingredients];
+      copy.pop();
+      return copy;
+    });
+  };
+
+  const onChangeCallback = useCallback(
+    (target, value, id) =>
+      setIngredients((ingredients) => {
+        return ingredients.map((item) => {
+          if (item.id === id) {
+            return { ...item, [target]: value };
+          } else {
+            return item;
           }
-        : {
-            id,
-            [name]: value,
-          };
-    copy[id] = ingredient;
-    setIngredients(copy);
-  };
+        });
+      }),
+    []
+  );
 
-  const Ingredient = (idx) => {
-    console.log(idx);
-    return (
-      <AddIngredient
-        id={idx}
-        key={idx}
-        ingredientValue={ingredients[idx]?.['ingredient']?.value}
-        quantityValue={ingredients[idx]?.['quantity']?.value}
-        measurementValue={ingredients[idx]?.['measurement']?.value}
-        setIngredient={onChangeCallback}
-      />
-    );
-  };
-
-  useEffect(() => {
-    let result = [];
-    for (let i = 0; i < 10; i++) {
-      result = result.concat(Ingredient(i));
-    }
-    setAddArray(result);
-  }, []);
-
-  // useEffect(() => {
-  //   console.log(ingredients.length, addArray.length);
-  //   if (ingredients.length === addArray.length && ingredients.length !== 0) {
-  //     const result = addArray.concat(Ingredient(addArray.length));
-  //     setAddArray(result);
-  //   }
-  // }, [ingredients]);
+  const totalIngredients = ingredients.map((row) => (
+    <AddIngredient
+      id={row.id}
+      key={row.id}
+      ingredientValue={row.ingredient}
+      quantityValue={row.quantity}
+      measurementValue={row.measurement}
+      setIngredient={onChangeCallback}
+    />
+  ));
 
   return (
     <ul className='add_ingList'>
       <p className='accentFontColor'>Simply add Ingredients for your recipe!</p>
       <li className='add_ingLine'>
-        <div id='title_ingredient'>Ingredient</div>
-        <div>Quantity</div>
+        <div id='add_ingredient'>Ingredient</div>
+        <div id='add_quantity'>Quantity</div>
         <div>Measurement</div>
       </li>
-      {addArray}
+      {totalIngredients}
     </ul>
   );
-  //  <ul className='ingredientLists'>{ingredientMaker()}</ul>;
-};
+});
 
 export default AddIngredientLists;

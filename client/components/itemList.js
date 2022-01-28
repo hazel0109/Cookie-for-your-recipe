@@ -5,19 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { itemListSelector } from './itemList.selector';
 import { updateActiveId } from '../redux/action/actions';
 
-const ItemMaker = (recipes, setActiveButtonId) => {
-  return recipes.map((item, idx) => {
-    return (
-      <Item
-        key={idx}
-        id={item._id}
-        onClick={setActiveButtonId}
-        title={item.title}
-      />
-    );
-  });
-};
-
 const ItemList = () => {
   //Declare new state variable, which we will call "click"
   const dispatch = useDispatch();
@@ -29,13 +16,24 @@ const ItemList = () => {
     dispatch(updateActiveId(activeButtonId));
   }, [activeButtonId]);
 
+  const ItemList = recipes.map((item, idx) => {
+    return (
+      <Item
+        key={idx}
+        id={item._id}
+        onClick={setActiveButtonId}
+        title={item.title}
+      />
+    );
+  });
+
   return (
     <>
       <ul className='itemList'>
         <button className='new_itemBtn' onClick={() => setClick(true)}>
           Add New Recipe
         </button>
-        {ItemMaker(recipes, setActiveButtonId)}
+        {ItemList}
       </ul>
       {click && <NewRecipePopup cancelPopup={() => setClick(false)} />}
     </>

@@ -1,85 +1,76 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { newRecipeInstructionsUpdate } from '../redux/action/actions';
 import AddRecipe from './addRecipe';
 
-const AddRecipeLists = () => {
-  const [instructions, setInstructions] = useState([]);
+const AddRecipeLists = memo(() => {
+  const initList = [
+    { id: 1, instruction: '' },
+    { id: 2, instruction: '' },
+    { id: 3, instruction: '' },
+  ];
+  const [instructions, setInstructions] = useState(initList);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(newRecipeInstructionsUpdate(instructions));
+    const list = instructions.filter((item) => item.instruction !== '');
+    dispatch(newRecipeInstructionsUpdate(list));
+    const prev = { ...instructions[instructions.length - 2] };
+    const last = { ...instructions[instructions.length - 1] };
+    if (last.instruction !== '') {
+      addStep(last.id);
+    }
+    if (prev.instruction === '' && prev.id > 2) {
+      removeStep();
+    }
   }, [instructions]);
 
-  //each instruction needs id, and need to be in the state with id.
-  const addInstructionsCallback = (value, id) => {
-    console.log(value);
-    const copy = [...instructions];
-    copy[id] = value;
-    setInstructions(copy);
+  const addStep = (itemId) => {
+    setInstructions((instructions) => [
+      ...instructions,
+      { id: itemId + 1, instruction: '' },
+    ]);
   };
+
+  const removeStep = () => {
+    setInstructions((instructions) => {
+      const copy = [...instructions];
+      copy.pop();
+      return copy;
+    });
+  };
+
+  const addInstructionsCallback = useCallback(
+    (value, id) =>
+      setInstructions((instructions) => {
+        return instructions.map((item) => {
+          if (item.id === id) {
+            return { ...item, instruction: value };
+          } else {
+            return item;
+          }
+        });
+      }),
+    []
+  );
+
+  const totalSteps = instructions.map((step) => {
+    return (
+      <AddRecipe
+        key={step.id}
+        id={step.id}
+        stepValue={step.instruction}
+        setInstruction={addInstructionsCallback}
+      />
+    );
+  });
 
   return (
     <ul className='add_recipeList'>
       <p className='accentFontColor'>Add steps for your recipe!</p>
-      <AddRecipe
-        id={0}
-        // stepValue={instructions[0]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={1}
-        // stepValue={instructions[1]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={2}
-        // stepValue={instructions[2]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={3}
-        // stepValue={instructions[1]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={4}
-        // stepValue={instructions[2]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={5}
-        // stepValue={instructions[1]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={6}
-        // stepValue={instructions[2]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={7}
-        // stepValue={instructions[1]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={8}
-        // stepValue={instructions[2]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={9}
-        // stepValue={instructions[1]}
-        setInstruction={addInstructionsCallback}
-      />
-      <AddRecipe
-        id={10}
-        // stepValue={instructions[2]}
-        setInstruction={addInstructionsCallback}
-      />
+      {totalSteps}
     </ul>
   );
-  //  <ul className='ingredientLists'>{ingredientMaker()}</ul>;
-};
+});
 
 export default AddRecipeLists;
