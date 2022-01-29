@@ -1,19 +1,17 @@
 import axios from 'axios';
 class RecipeService {
-  static async getRecipes(url) {
+  static async getRecipes() {
     try {
-      let result = await axios.get(url);
+      let result = await axios.get('http://localhost:3000/recipes');
       return result.data;
     } catch (err) {
       console.log(err);
     }
   }
 
-  static async postRecipes(url, data) {
+  static async postRecipes(data) {
     try {
-      // debugger;
-      let result = await axios.post(url, data);
-      // debugger;
+      let result = await axios.post('http://localhost:3000/recipes', data);
       console.log(result);
       return result.data;
     } catch (err) {

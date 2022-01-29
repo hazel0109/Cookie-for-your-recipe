@@ -1,0 +1,119 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 4.5rem;
+  background-color: $white-color;
+  border-bottom: 1px solid $accent-color;
+  width: 100%;
+  height: 8vh;
+}
+
+#logo {
+  font-size: $font-logo;
+}
+
+.search {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  position: relative;
+  width: 40em;
+}
+
+#header_search {
+  display: flex;
+  height: 2.5em;
+  padding: 2px 15px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $accent-color;
+  background-color: $background-color;
+  outline: none;
+  font-size: $font-small;
+}
+
+#mobile_logo {
+  display: none;
+  position: absolute;
+  height: 2em;
+  line-height: 2em;
+  font-size: $font-mobile-large;
+  left: 1em;
+  padding-right: 0.5em;
+  border-right: 1px solid $primary-color;
+}
+
+.header_btn {
+  border-radius: 20px;
+  color: $font-color;
+  font-size: $font-small;
+  padding: 0.2em 1em;
+  line-height: 100%;
+}
+
+.header_btn:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.memu_toggle {
+  display: none;
+  background-color: $primary-color;
+  color: $font-color;
+}
+
+.memu_toggle:focus {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.signout_btn {
+  border: 1.5px solid $primary-color;
+  background-color: $background-color;
+}
+
+@media screen and (max-width: $mediaQuery-tablet) {
+  #header_search {
+    font-size: $font-regular;
+  }
+  .header_btn {
+    font-size: $font-regular;
+  }
+}
+
+@media screen and (max-width: $mediaQuery-mobile) {
+  #logo {
+    display: none;
+  }
+  .header {
+    flex-direction: column;
+    height: 100%;
+  }
+  .search {
+    margin: 1.5em;
+    width: 100%;
+  }
+  #header_search {
+    border-radius: 15px;
+    height: 2.5em;
+    padding-left: 5.5em;
+    font-size: $font-mobile-large;
+  }
+  #mobile_logo {
+    display: block;
+  }
+  #icons {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header_btn {
+    font-size: $font-mobile-medium;
+  }
+
+  .memu_toggle {
+    display: block;
+  }
+}

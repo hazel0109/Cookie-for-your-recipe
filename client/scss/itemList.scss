@@ -2,24 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   background-color: $white-color;
-  width: 18rem;
-  height: 88vh;
+  flex-basis: 40%;
   border: 2px solid $accent-font-color;
   border-radius: 20px;
-  padding: 1rem 0.6rem;
-  font-size: $font-medium;
+  padding: 1.2em 1em;
+  font-size: $font-small;
   overflow-y: auto;
 }
 
 .new_itemBtn {
   margin-bottom: 0.8rem;
-  width: 9.4rem;
+  width: 100%;
   padding: 0.6rem;
   background-color: $primary-color;
   color: $font-color;
   font-weight: bold;
   border-radius: 20px;
+  font-size: $font-small;
 }
 
 .new_itemBtn:hover {
@@ -31,10 +32,11 @@
   text-align: center;
   padding: 0.6rem;
   margin: 0.3rem 0;
-  width: 9.4rem;
+  width: 100%;
   border: 1px solid $accent-font-color;
   font-weight: bold;
   border-radius: 20px;
+  font-size: $font-small;
 }
 
 .item:hover {
@@ -45,4 +47,32 @@
 .item:focus {
   background-color: $accent-color;
   color: $white-color;
+}
+
+@media screen and (max-width: $mediaQuery-tablet) {
+  .new_itemBtn {
+    font-size: $font-medium;
+  }
+  .item {
+    font-size: $font-medium;
+  }
+}
+
+@media screen and (max-width: $mediaQuery-mobile) {
+  .itemList {
+    display: none;
+    margin: 0;
+    margin-top: 2em;
+    flex-basis: 100%;
+    max-height: 80vh;
+  }
+  .menu_active {
+    display: flex;
+  }
+  .new_itemBtn {
+    font-size: $font-mobile-large;
+  }
+  .item {
+    font-size: $font-mobile-large;
+  }
 }

@@ -3,10 +3,10 @@ import React, { memo } from 'react';
 const AddIngredient = memo(
   ({ id, ingredientValue, quantityValue, measurementValue, setIngredient }) => {
     return (
-      <li className='add_ingLine'>
+      <>
         <input
           type='text'
-          className='input_ingredient'
+          className='addIngredients__input addIngredients__gridColumn--first'
           placeholder='ingredient'
           name='ingredient'
           value={ingredientValue}
@@ -14,7 +14,7 @@ const AddIngredient = memo(
         ></input>
         <input
           type='text'
-          className='input_quantity'
+          className='addIngredients__input input_quantity'
           placeholder='qt'
           name='quantity'
           value={quantityValue}
@@ -22,13 +22,13 @@ const AddIngredient = memo(
         ></input>
         <input
           type='text'
-          className='input_measurement'
+          className='addIngredients__input input_measurement'
           placeholder='pcs'
           name='measurement'
           value={measurementValue}
           onChange={(e) => setIngredient(e.target.name, e.target.value, id)}
         ></input>
-      </li>
+      </>
     );
   }
 );

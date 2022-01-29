@@ -4,7 +4,7 @@ const AddRecipe = memo(({ id, stepValue, setInstruction }) => {
   return (
     <li className='add_recipe'>
       <span
-        className='input_recipe'
+        className='addIngredients__input input_recipe'
         role='textbox'
         value={stepValue}
         contentEditable

@@ -19,26 +19,11 @@ const NewRecipePopup = (props) => {
     dispatch(newRecipeTitleUpdate(title));
   }, [title]);
 
-  // useEffect(async () => {
-  //   const result = await RecipeService.getRecipes(
-  //     'http://localhost:3000/recipes'
-  //   );
-  //   console.log(result);
-  //   dispatch(populateRecipes(result));
-  // }, []);
-
-  //use async when I need to call to badkend
   const onClickHandler = async () => {
-    //need to do props.cancelPopup
-    //need to make axios call?
-    const results = await RecipeService.postRecipes(
-      'http://localhost:3000/recipes',
-      newRecipe
-    );
+    const results = await RecipeService.postRecipes(newRecipe);
     props.cancelPopup();
     dispatch(addNewRecipe(results));
     dispatch(cleanPopupState());
-    //need to add functionally error handler that it cannot add to the list without filled in
   };
 
   const onCancelClick = () => {
@@ -50,10 +35,16 @@ const NewRecipePopup = (props) => {
     <div className='popupBgd'>
       <div className='popup_container'>
         <div className='popup_btns'>
-          <button className='popup_cancelBtn' onClick={onCancelClick}>
+          <button
+            className='popup_btn_fontsize popup_cancelBtn'
+            onClick={onCancelClick}
+          >
             Cancel
           </button>
-          <button className='popup_addBtn' onClick={onClickHandler}>
+          <button
+            className='popup_btn_fontsize popup_addBtn'
+            onClick={onClickHandler}
+          >
             Add Recipe
           </button>
         </div>
@@ -68,10 +59,8 @@ const NewRecipePopup = (props) => {
           ></input>
         </div>
         <div className='popup_main'>
-          <div className='popup_sidebar'></div>
           <AddIngredientLists />
           <AddRecipeLists />
-          <div className='popup_sidebar'></div>
         </div>
       </div>
     </div>

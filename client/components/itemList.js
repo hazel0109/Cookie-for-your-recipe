@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { itemListSelector } from './itemList.selector';
 import { updateActiveId } from '../redux/action/actions';
 
-const ItemList = () => {
-  //Declare new state variable, which we will call "click"
+const ItemList = ({ toggleMenu }) => {
   const dispatch = useDispatch();
   const [click, setClick] = useState(false);
   const [activeButtonId, setActiveButtonId] = useState();
@@ -29,7 +28,7 @@ const ItemList = () => {
 
   return (
     <>
-      <ul className='itemList'>
+      <ul className={`itemList ${toggleMenu && 'menu_active'}`}>
         <button className='new_itemBtn' onClick={() => setClick(true)}>
           Add New Recipe
         </button>

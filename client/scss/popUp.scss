@@ -5,32 +5,32 @@
   background-color: transparentize($black-color, 0.6);
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .popup_container {
-  position: relative;
-  margin: auto;
-  top: 2.1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $background-color;
-  width: 84vw;
-  height: 90vh;
-  border-radius: 20px;
-  padding: 1rem 0;
+  width: 60em;
+  height: 40em;
+  border-radius: 15px;
+  padding: 2em 3em;
 }
 
 .popup_btns {
-  width: 49rem;
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2em;
 }
 
 .popup_cancelBtn {
-  position: relative;
-  left: 0.8rem;
-  width: 9rem;
-  padding: 0.5rem;
+  width: 9em;
+  padding: 0.5em;
   border: 2px solid $primary-color;
   background-color: $background-color;
   color: $font-color;
@@ -44,10 +44,8 @@
 }
 
 .popup_addBtn {
-  position: relative;
-  left: 30rem;
-  width: 9rem;
-  padding: 0.5rem;
+  width: 9em;
+  padding: 0.5em;
   background-color: $primary-color;
   color: $font-color;
   font-weight: bold;
@@ -63,61 +61,76 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 46rem;
-  margin: 0 0 1.2rem;
+  width: 100%;
+  margin: 0 0 1.2em;
 }
 
 .title_label {
   font-size: $font-logo;
   color: $dark-second-color;
   font-weight: bold;
-  margin: 0 2rem;
+  margin: 0 1em;
 }
 
 .input_title {
-  width: 26rem;
+  width: 38em;
   overflow: hidden;
   border: 2px solid $accent-font-color;
-  border-radius: 20px;
-  padding: 1rem;
-  height: 1.5rem;
+  border-radius: 15px;
+  padding: 1em;
+  height: 2.5em;
   outline: none;
-  font-size: $font-large;
+  font-size: $font-regular;
 }
 
 .popup_main {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50rem;
+  width: 100%;
+  height: 28em;
 }
 
-.popup_sidebar {
-  width: 0.2rem;
-  height: 2.5rem;
-  background-color: $accent-font-color;
+.accentFontColor {
+  color: $dark-second-color;
+  font-weight: bold;
+  font-size: $font-small;
+  margin-bottom: 1.5rem;
 }
 
 .add_ingList {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0.5rem;
+  padding: 1.5em;
+  margin-right: 1em;
   background-color: $white-color;
-  width: 20rem;
-  height: 25rem;
+  flex-basis: 40%;
+  height: 100%;
   border: 3px solid $primary-color;
   border-radius: 20px;
-  font-size: $font-medium;
   overflow-y: auto;
 }
 
-.add_ingLine {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0.2rem 0.8rem;
+.addIngredients__grid {
+  display: grid;
+  grid-template: 1.5em / 3fr 1fr 1fr;
+  gap: 0.5em;
+}
+
+.addIngredients__label {
   font-size: $font-small;
-  width: 18rem;
+}
+
+.addIngredients__gridColumn--first {
+  grid-column: 1;
+  justify-self: center;
+}
+.addIngredients__gridColumn--second {
+  grid-column: 2;
+  justify-self: center;
+}
+.addIngredients__gridColumn--third {
+  grid-column: 3;
+  justify-self: center;
 }
 
 #title_ingredient {
@@ -128,31 +141,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5em;
   background-color: $white-color;
-  width: 27rem;
-  height: 25rem;
+  flex-basis: 60%;
+  height: 100%;
   border: 3px solid $primary-color;
   border-radius: 20px;
-  font-size: $font-medium;
   overflow-y: auto;
 }
 
 .add_recipe {
-  margin: 0.2rem 0.8rem;
+  width: 100%;
+  margin: 0.3em 0;
+}
+
+.addIngredients__input {
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 0.4em 0.7em;
+  outline: none;
+  width: 100%;
+  font-size: $font-small;
 }
 
 .input_recipe {
   display: block;
-  width: 25rem;
-  overflow: hidden;
-  border: 2px solid $accent-font-color;
-  border-radius: 20px;
-  padding: 0.7rem;
-  min-height: 40px;
-  line-height: 20px;
-  outline: none;
-  font-size: $font-medium;
+  padding: 0.5em 0.8em;
+  line-height: 1.4em;
 }
 
 .input_recipe[contentEditable]:empty::before {
@@ -160,35 +176,81 @@
   color: gray;
 }
 
-.input_ingredient {
-  width: 9rem;
-  overflow: hidden;
-  border: 2px solid $accent-font-color;
-  border-radius: 20px;
-  padding: 10px;
-  height: 1.5rem;
-  outline: none;
-  font-size: $font-medium;
-}
-
 .input_quantity {
-  width: 4rem;
-  overflow: hidden;
-  border: 2px solid $accent-font-color;
-  border-radius: 20px;
-  padding: 10px;
-  height: 1.5rem;
-  outline: none;
   text-align: right;
 }
 
 .input_measurement {
-  width: 4rem;
-  overflow: hidden;
-  border: 2px solid $accent-font-color;
-  border-radius: 20px;
-  padding: 10px;
-  height: 1.5rem;
-  outline: none;
   text-align: right;
+}
+
+.popup_btn_fontsize {
+  font-size: $font-regular;
+}
+
+@media screen and (max-width: $mediaQuery-tablet) {
+  .addIngredients__input {
+    font-size: $font-regular;
+  }
+  .popup_btn_fontsize {
+    font-size: $font-medium;
+  }
+  .input_title {
+    width: 28em;
+    font-size: $font-large;
+  }
+
+  .accentFontColor {
+    font-size: $font-regular;
+  }
+  .addIngredients__label {
+    font-size: $font-regular;
+  }
+}
+
+@media screen and (max-width: $mediaQuery-mobile) {
+  .popup_container {
+    width: 60em;
+    height: 95em;
+  }
+
+  .add_title {
+    flex-direction: column;
+  }
+
+  .title_label {
+    font-size: $font-mobile-logo;
+    margin-top: 0.8em;
+  }
+
+  .input_title {
+    width: 100%;
+    margin: 1.5em 0 1em;
+    font-size: $font-mobile-large;
+    border-radius: 10px;
+    height: 2.5em;
+  }
+
+  .popup_main {
+    flex-direction: column;
+    height: 80em;
+  }
+
+  .accentFontColor {
+    font-size: $font-mobile-regular;
+  }
+  .add_ingList {
+    margin-right: 0;
+    margin-bottom: 2em;
+  }
+
+  .addIngredients__label {
+    font-size: $font-mobile-small;
+  }
+  .addIngredients__input {
+    font-size: $font-mobile-regular;
+  }
+  .popup_btn_fontsize {
+    font-size: $font-mobile-regular;
+  }
 }

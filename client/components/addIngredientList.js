@@ -82,13 +82,19 @@ const AddIngredientLists = memo(() => {
 
   return (
     <ul className='add_ingList'>
-      <p className='accentFontColor'>Simply add Ingredients for your recipe!</p>
-      <li className='add_ingLine'>
-        <div id='add_ingredient'>Ingredient</div>
-        <div id='add_quantity'>Quantity</div>
-        <div>Measurement</div>
-      </li>
-      {totalIngredients}
+      <p className='accentFontColor'>Add Ingredients for your recipe!</p>
+      <div className='addIngredients__grid'>
+        <p className='addIngredients__label addIngredients__gridColumn--first '>
+          Ingredient
+        </p>
+        <p className='addIngredients__label addIngredients__gridColumn--second'>
+          Quantity
+        </p>
+        <p className='addIngredients__label addIngredients__gridColumn--third'>
+          Measurement
+        </p>
+        {totalIngredients}
+      </div>
     </ul>
   );
 });
