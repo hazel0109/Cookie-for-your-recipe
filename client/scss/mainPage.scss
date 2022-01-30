@@ -48,7 +48,7 @@ a {
   flex: 1 1 47%;
 }
 
-.recipe_steps {
+.recipe_directions {
   flex: 1 1 53%;
 }
 
@@ -65,20 +65,29 @@ a {
     max-height: 32vh;
   }
 
-  .recipe_steps {
+  .recipe_directions {
     max-height: 52vh;
   }
+}
+
+.error {
+  color: $dark-second-color;
+  font-size: $font-regular;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2em;
 }
 
 @media screen and (max-width: $mediaQuery-mobile) {
   .recipe_contents {
     height: 85vh;
+    overflow-y: auto;
   }
   .recipe_types {
     flex: 0 1 fit-content;
   }
 
-  .recipe_steps {
+  .recipe_directions {
     flex: 0 1 fit-content;
   }
 }

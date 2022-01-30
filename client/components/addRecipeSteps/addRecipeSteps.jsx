@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { newRecipeInstructionsUpdate } from '../redux/action/actions';
-import AddRecipe from './addRecipe';
+import { newRecipeInstructionsUpdate } from '../../redux/action/actions';
+import AddStep from '../addStep/addStep.jsx';
 
-const AddRecipeLists = memo(() => {
+const AddRecipeSteps = memo(() => {
   const initList = [
     { id: 1, instruction: '' },
     { id: 2, instruction: '' },
@@ -56,7 +56,7 @@ const AddRecipeLists = memo(() => {
 
   const totalSteps = instructions.map((step) => {
     return (
-      <AddRecipe
+      <AddStep
         key={step.id}
         id={step.id}
         stepValue={step.instruction}
@@ -73,4 +73,4 @@ const AddRecipeLists = memo(() => {
   );
 });
 
-export default AddRecipeLists;
+export default AddRecipeSteps;

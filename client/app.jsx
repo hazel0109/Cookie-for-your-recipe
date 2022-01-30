@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import MainContainer from './containers/mainContainer';
+import React from 'react';
+import MainContainer from './components/mainContainer/mainContainer.jsx';
 
 const App = () => {
   return (

@@ -23,6 +23,7 @@
 
 .popup_btns {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 2em;
@@ -55,6 +56,13 @@
 .popup_addBtn:hover {
   background-color: $dark-second-color;
   color: $accent-font-color;
+}
+
+.error_message {
+  color: $dark-second-color;
+  font-size: $font-regular;
+  font-weight: bold;
+  margin: 0 1em;
 }
 
 .add_title {
@@ -206,6 +214,9 @@
   .addIngredients__label {
     font-size: $font-regular;
   }
+  .error_message {
+    font-size: $font-regular;
+  }
 }
 
 @media screen and (max-width: $mediaQuery-mobile) {
@@ -251,6 +262,9 @@
     font-size: $font-mobile-regular;
   }
   .popup_btn_fontsize {
+    font-size: $font-mobile-regular;
+  }
+  .error_message {
     font-size: $font-mobile-regular;
   }
 }

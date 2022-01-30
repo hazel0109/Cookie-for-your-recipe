@@ -17,8 +17,6 @@ export const RecipesReducer = (state = initialState, action) => {
     case types.RECIPE_INSERT: {
       return {
         ...state,
-        isLoading: false,
-        error: false,
         recipesList: action.payload,
       };
     }

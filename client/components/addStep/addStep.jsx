@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-const AddRecipe = memo(({ id, stepValue, setInstruction }) => {
+const AddStep = memo(({ id, stepValue, setInstruction }) => {
   return (
     <li className='add_recipe'>
       <span
@@ -14,4 +14,4 @@ const AddRecipe = memo(({ id, stepValue, setInstruction }) => {
   );
 });
 
-export default AddRecipe;
+export default AddStep;

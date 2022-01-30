@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { newRecipeIngredientspdate } from '../redux/action/actions';
-import Recipe from './recipe';
-import { ingredientListsSelector } from './ingredientLists.selector';
+import { newRecipeIngredientspdate } from '../../redux/action/actions';
+import Steps from '../steps/steps.jsx';
+import { ingredientListsSelector } from '../ingredientLists/ingredientLists.selector';
 
-const MainRecipe = () => {
+const RecipeSteps = memo(() => {
   const { recipes, activeId } = useSelector(ingredientListsSelector);
   const recipe = recipes.find((recipe) => recipe._id === activeId);
 
@@ -12,7 +12,7 @@ const MainRecipe = () => {
     recipe &&
     recipe.instructions.map((step) => {
       return (
-        <Recipe
+        <Steps
           key={step.id}
           id={step.id}
           index={step.id}
@@ -21,7 +21,7 @@ const MainRecipe = () => {
       );
     });
 
-  return <ul className='mainRecipe'>{RecipeMaker}</ul>;
-};
+  return <ul className='recipe_steps'>{RecipeMaker}</ul>;
+});
 
-export default MainRecipe;
+export default RecipeSteps;

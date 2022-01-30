@@ -44,11 +44,6 @@ module.exports = {
           'sass-loader',
         ],
       },
-      // {
-      //   test: /\.s[ac]ss$/i,
-      //   exclude: [/node_modules/, /client\/sass\/modules/],
-      //   use: ['style-loader', 'css-loader', 'sass-loader'],
-      // },
     ],
   },
   devServer: {

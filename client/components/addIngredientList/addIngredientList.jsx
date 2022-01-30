@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import AddIngredient from './addIngredient';
-import { newRecipeIngredientspdate } from '../redux/action/actions';
+import AddIngredient from '../addIngredient/addIngredient.jsx';
+import { newRecipeIngredientspdate } from '../../redux/action/actions';
 
 const AddIngredientLists = memo(() => {
   const initList = [

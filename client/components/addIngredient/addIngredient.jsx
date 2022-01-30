@@ -17,6 +17,7 @@ const AddIngredient = memo(
           className='addIngredients__input input_quantity'
           placeholder='qt'
           name='quantity'
+          autoComplete='off'
           value={quantityValue}
           onChange={(e) => setIngredient(e.target.name, e.target.value, id)}
         ></input>
