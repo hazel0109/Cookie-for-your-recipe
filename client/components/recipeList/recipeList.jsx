@@ -1,9 +1,9 @@
 import React, { useState, useEffect, memo } from 'react';
-import Recipe from '../recipe/recipe.jsx';
-import AddRecipePopup from '../addRecipePopup/addRecipePopup.jsx';
+import { RecipeButton } from '../common';
+import AddRecipePopup from '../addRecipePopup/addRecipePopup';
 import { useDispatch, useSelector } from 'react-redux';
 import { recipeListSelector } from './recipeList.selector';
-import { updateActiveId } from '../../redux/action/actions';
+import { updateActiveId } from '../../redux/action/recipesActions';
 
 const RecipeList = memo(({ toggleMenu, setToggleMenu }) => {
   const dispatch = useDispatch();
@@ -16,25 +16,25 @@ const RecipeList = memo(({ toggleMenu, setToggleMenu }) => {
     dispatch(updateActiveId(activeButtonId));
   }, [activeButtonId]);
 
-  const ItemList = recipes.map((item) => {
+  const recipeList = recipes.map((item) => {
     return (
-      <Recipe
+      <RecipeButton
         key={item._id}
         id={item._id}
-        onClick={setActiveButtonId}
+        handleClick={setActiveButtonId}
         activeId={activeId}
-        title={item.title}
+        label={item.title}
       />
     );
   });
 
   return (
     <>
-      <ul className={`itemList ${toggleMenu && 'menu_active'}`}>
-        <button className='new_itemBtn' onClick={() => setClick(true)}>
+      <ul className={`recipeList ${toggleMenu && 'menu_active'}`}>
+        <button className='new_recipeBtn' onClick={() => setClick(true)}>
           Add New Recipe
         </button>
-        {ItemList}
+        {recipeList}
       </ul>
       {click && <AddRecipePopup cancelPopup={() => setClick(false)} />}
     </>

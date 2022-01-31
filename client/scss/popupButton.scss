@@ -1,0 +1,41 @@
+.popupButton {
+  width: 8em;
+  padding: 0.5em;
+  font-size: $font-regular;
+  border: 2px solid $primary-color;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.popupButton--cancel {
+  background-color: $background-color;
+  color: $font-color;
+}
+
+.popupButton--cancel:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.popupButton--add {
+  background-color: $primary-color;
+  color: $font-color;
+}
+
+.popupButton--add:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+@media screen and (max-width: $mediaQuery-tablet) {
+  .popupButton {
+    font-size: $font-medium;
+  }
+}
+
+@media screen and (max-width: $mediaQuery-mobile) {
+  .popupButton {
+    font-size: $font-mobile-regular;
+    border-radius: 15px;
+  }
+}

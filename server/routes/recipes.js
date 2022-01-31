@@ -15,4 +15,12 @@ router.post(
   }
 );
 
+router.put('/', recipeController.updateRecipes, (req, res) => {
+  res.status(200).send(res.updateResult);
+});
+
+router.delete('/delete', recipeController.deleteRecipes, (req, res) => {
+  res.status(200).send(res.deleteResult);
+});
+
 module.exports = router;

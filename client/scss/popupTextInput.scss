@@ -1,0 +1,29 @@
+.popupTextInput {
+  overflow: hidden;
+  border: 2px solid $accent-font-color;
+  border-radius: 20px;
+  padding: 0.3em 0.8em;
+  outline: none;
+  width: 100%;
+  font-size: $font-small;
+}
+
+.popupTextInput--left {
+  text-align: left;
+}
+
+.popupTextInput--right {
+  text-align: right;
+}
+
+@media screen and (max-width: $mediaQuery-tablet) {
+  .popupTextInput {
+    font-size: $font-regular;
+  }
+}
+
+@media screen and (max-width: $mediaQuery-mobile) {
+  .popupTextInput {
+    font-size: $font-mobile-regular;
+  }
+}

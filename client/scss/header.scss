@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em 4.5rem;
+  padding: 1em 4.5rem;
   background-color: $white-color;
   border-bottom: 1px solid $accent-color;
   width: 100%;
@@ -23,7 +23,7 @@
 
 #header_search {
   display: flex;
-  height: 2.5em;
+  height: 2em;
   padding: 2px 15px;
   width: 100%;
   border-radius: 5px;
@@ -69,6 +69,7 @@
 }
 
 .signout_btn {
+  visibility: hidden;
   border: 1.5px solid $primary-color;
   background-color: $background-color;
 }

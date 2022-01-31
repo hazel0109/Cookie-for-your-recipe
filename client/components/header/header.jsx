@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { headerSelector } from './header.selector';
-import HeaderSearchPopup from '../headerSearchPopup/headerSearchPopup.jsx';
-import { updateActiveId } from '../../redux/action/actions';
+import HeaderSearchPopup from '../headerSearchPopup/headerSearchPopup';
+import { updateActiveId } from '../../redux/action/recipesActions';
 
 const Header = memo(({ onMenuToggle }) => {
   const dropdownRef = useRef();

@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { newRecipeIngredientspdate } from '../../redux/action/actions';
 import Steps from '../steps/steps.jsx';
 import { ingredientListsSelector } from '../ingredientLists/ingredientLists.selector';
 

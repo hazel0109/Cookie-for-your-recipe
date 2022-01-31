@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AddIngredientLists from '../addIngredientList/addIngredientList.jsx';
-import AddRecipeSteps from '../addRecipeSteps/addRecipeSteps.jsx';
+import AddIngredientLists from '../addIngredientList/addIngredientList';
+import AddRecipeSteps from '../addRecipeSteps/addRecipeSteps';
+import { PopupButton, PopupTextInput } from '../common';
 import {
   newRecipeTitleUpdate,
   addNewRecipe,
   cleanPopupState,
-} from '../../redux/action/actions';
+} from '../../redux/action/popupRecipeActions';
 import RecipeService from '../../services/recipesService/recipeService';
 import { addRecipePopupSelector } from './addRecipePopup.selector';
 
@@ -18,7 +19,11 @@ const AddRecipePopup = ({ cancelPopup }) => {
   const { newRecipe } = useSelector(addRecipePopupSelector);
 
   useEffect(() => {
-    dispatch(newRecipeTitleUpdate(title));
+    let name = title;
+    if (name) {
+      name = name.charAt(0).toUpperCase() + name.substring(1);
+    }
+    dispatch(newRecipeTitleUpdate(name));
   }, [title]);
 
   const onClickHandler = async () => {
@@ -50,12 +55,11 @@ const AddRecipePopup = ({ cancelPopup }) => {
     <div className='popupBgd'>
       <div className='popup_container'>
         <div className='popup_btns'>
-          <button
-            className='popup_btn_fontsize popup_cancelBtn'
-            onClick={onCancelClick}
-          >
-            Cancel
-          </button>
+          <PopupButton
+            label={'Cancel'}
+            type={'cancel'}
+            handleClick={onCancelClick}
+          />
           {addErr && (
             <div className='error_message'>
               please fill out recipe name, ingredients, and stpes
@@ -64,22 +68,21 @@ const AddRecipePopup = ({ cancelPopup }) => {
           {postErr && (
             <div className='error_message'>Cannot add the new recipe now</div>
           )}
-          <button
-            className='popup_btn_fontsize popup_addBtn'
-            onClick={onClickHandler}
-          >
-            Add Recipe
-          </button>
+          <PopupButton
+            label={'Add Recipe'}
+            type={'add'}
+            handleClick={onClickHandler}
+          />
         </div>
         <div className='add_title'>
           <label className='title_label'>What is your recipe?</label>
-          <input
-            type='text'
+          <PopupTextInput
             className='input_title'
-            placeholder='Create your recipe name here!'
-            onChange={(e) => setTitle(e.target.value)}
             value={title}
-          ></input>
+            name={'title'}
+            placeholder='Create your recipe name here!'
+            handleChange={(e) => setTitle(e.target.value)}
+          />
         </div>
         <div className='popup_main'>
           <AddIngredientLists />

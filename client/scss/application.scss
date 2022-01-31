@@ -1,7 +1,17 @@
+// variables
 @import 'variables';
+
+//common
+@import 'popupTextInput';
+@import 'popupButton';
+@import 'editButton';
+@import 'recipeButton';
+
+//components
 @import 'header';
 @import 'mainPage';
 @import 'popUp';
-@import 'itemList';
+@import 'recipes';
 @import 'ingredient';
-@import 'recipe';
+@import 'recipeSteps';
+@import 'editRecipe';

@@ -1,0 +1,55 @@
+.editButton {
+  width: 8em;
+  padding: 0.5em;
+  border: 2px solid $primary-color;
+  font-weight: bold;
+  border-radius: 20px;
+  font-size: $font-small;
+}
+
+.editButton--save {
+  background-color: $primary-color;
+  color: $font-color;
+}
+
+.editButton--save:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+.editButton--delete {
+  background-color: $background-color;
+  color: $dark-second-color;
+}
+
+.editButton--cancel {
+  background-color: $background-color;
+  color: $font-color;
+  margin-right: 2em;
+}
+
+.editButton--delete:hover,
+.editButton--cancel:hover {
+  background-color: $dark-second-color;
+  color: $accent-font-color;
+}
+
+@media screen and (max-width: $mediaQuery-tablet) {
+  .editButton {
+    font-size: $font-medium;
+  }
+}
+
+@media screen and (max-width: $mediaQuery-mobile) {
+  .editButton {
+    width: 6em;
+    padding: 0.3em;
+    font-size: $font-mobile-regular;
+    border-radius: 15px;
+  }
+  .editButton--cancel {
+    background-color: $background-color;
+    color: $font-color;
+    margin-right: 1em;
+  }
+}

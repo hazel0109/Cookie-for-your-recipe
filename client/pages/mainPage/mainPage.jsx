@@ -1,24 +1,28 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import RecipeList from '../recipeList/recipeList.jsx';
-import IngredientLists from '../ingredientLists/ingredientLists.jsx';
-import RecipeSteps from '../recipeSteps/recipeSteps.jsx';
-import Header from '../header/header.jsx';
+import RecipeList from '../../components/recipeList/recipeList';
+import IngredientLists from '../../components/ingredientLists/ingredientLists';
+import RecipeSteps from '../../components/recipeSteps/recipeSteps';
+import Header from '../../components/header/header';
 import RecipeService from '../../services/recipesService/recipeService';
-import { populateRecipes } from '../../redux/action/actions';
+import { populateRecipes } from '../../redux/action/recipesActions';
 
-const MainContainer = () => {
+const MainPage = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [err, setErr] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    try {
-      const result = await RecipeService.getRecipes();
-      dispatch(populateRecipes(result));
-    } catch (err) {
-      setErr(err);
-    }
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await RecipeService.getRecipes();
+        dispatch(populateRecipes(result));
+        setErr(false);
+      } catch (err) {
+        setErr(err);
+      }
+    };
+    getData();
   }, []);
 
   const onMenuToggle = useCallback(() => {
@@ -28,8 +32,8 @@ const MainContainer = () => {
   return (
     <div className='recipebook'>
       <Header onMenuToggle={onMenuToggle} />
-      {err && <div className='error'>Cannot load the recipes now</div>}
       <div className='recipe_contents'>
+        {err && <div className='error'>Please add your recipes</div>}
         <div className='recipe_types'>
           <RecipeList toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
           {!toggleMenu && <IngredientLists />}
@@ -42,4 +46,4 @@ const MainContainer = () => {
   );
 };
 
-export default MainContainer;
+export default MainPage;

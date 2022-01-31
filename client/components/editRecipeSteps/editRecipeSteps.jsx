@@ -1,23 +1,24 @@
 import React, { useEffect, useState, useCallback, memo } from 'react';
-import { useDispatch } from 'react-redux';
-import { newRecipeInstructionsUpdate } from '../../redux/action/popupRecipeActions';
+import { useSelector, useDispatch } from 'react-redux';
+import { editInstructionUpdate } from '../../redux/action/editRecipeActions';
+import { EditStepsSelector } from './editRecipeSteps.selector';
 import UpsertStep from '../upsertStep/upsertStep';
 
-const AddRecipeSteps = memo(() => {
-  const initList = [
-    { id: 1, instruction: '' },
-    { id: 2, instruction: '' },
-    { id: 3, instruction: '' },
-  ];
-  const [instructions, setInstructions] = useState(initList);
+const EditRecipeSteps = memo(() => {
+  const [instructions, setInstructions] = useState([]);
   const dispatch = useDispatch();
+  const { initInstructions } = useSelector(EditStepsSelector);
+
+  useEffect(() => {
+    setInstructions(initInstructions);
+  }, []);
 
   useEffect(() => {
     const list = instructions.filter((item) => item.instruction !== '');
-    dispatch(newRecipeInstructionsUpdate(list));
+    dispatch(editInstructionUpdate(list));
     const prev = { ...instructions[instructions.length - 2] };
     const last = { ...instructions[instructions.length - 1] };
-    if (last.instruction !== '') {
+    if (last.id && last.instruction !== '') {
       addStep(last.id);
     }
     if (prev.instruction === '' && prev.id > 2) {
@@ -72,5 +73,4 @@ const AddRecipeSteps = memo(() => {
     </ul>
   );
 });
-
-export default AddRecipeSteps;
+export default EditRecipeSteps;

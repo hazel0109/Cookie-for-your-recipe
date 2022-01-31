@@ -26,6 +26,29 @@ export const RecipesReducer = (state = initialState, action) => {
         activeId: action.payload,
       };
     }
+    case types.RECIPE_UPDATE: {
+      const updateList = state.recipesList.map((recipe) => {
+        if (recipe._id === action.payload._id) {
+          return action.payload;
+        }
+        return recipe;
+      });
+
+      return {
+        ...state,
+        recipesList: updateList,
+      };
+    }
+    case types.RECIPE_DELETE: {
+      const updateList = state.recipesList.filter(
+        (recipe) => recipe._id !== action.payload
+      );
+
+      return {
+        ...state,
+        recipesList: updateList,
+      };
+    }
     default: {
       return state;
     }

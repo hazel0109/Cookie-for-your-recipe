@@ -1,38 +1,24 @@
 import React, { useEffect, useState, useCallback, memo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import UpsertIngredient from '../upsertIngredient/upsertIngredient';
-import { newRecipeIngredientspdate } from '../../redux/action/popupRecipeActions';
+import { editIngredientUpdate } from '../../redux/action/editRecipeActions';
+import { EditIngredientsSelector } from './editIngredientList.selector';
 
-const AddIngredientLists = memo(() => {
-  const initList = [
-    {
-      id: 1,
-      ingredient: '',
-      quantity: '',
-      measurement: '',
-    },
-    {
-      id: 2,
-      ingredient: '',
-      quantity: '',
-      measurement: '',
-    },
-    {
-      id: 3,
-      ingredient: '',
-      quantity: '',
-      measurement: '',
-    },
-  ];
-  const [ingredients, setIngredients] = useState(initList);
+const EditIngredientList = memo(() => {
+  const [ingredients, setIngredients] = useState([]);
   const dispatch = useDispatch();
+  const { initIngredients } = useSelector(EditIngredientsSelector);
+
+  useEffect(() => {
+    setIngredients(initIngredients);
+  }, []);
 
   useEffect(() => {
     const list = ingredients.filter((item) => item.ingredient !== '');
-    dispatch(newRecipeIngredientspdate(list));
+    dispatch(editIngredientUpdate(list));
     const prev = { ...ingredients[ingredients.length - 2] };
     const last = { ...ingredients[ingredients.length - 1] };
-    if (last.ingredient !== '') {
+    if (last.id && last.ingredient !== '') {
       addRow(last.id);
     }
     if (prev.ingredient === '' && prev.id > 2) {
@@ -84,7 +70,7 @@ const AddIngredientLists = memo(() => {
     <ul className='add_ingList'>
       <p className='accentFontColor'>Add Ingredients for your recipe!</p>
       <div className='addIngredients__grid'>
-        <p className='addIngredients__label'>Ingredient</p>
+        <p className='addIngredients__label '>Ingredient</p>
         <p className='addIngredients__label'>Quantity</p>
         <p className='addIngredients__label'>Measurement</p>
         {totalIngredients}
@@ -93,4 +79,4 @@ const AddIngredientLists = memo(() => {
   );
 });
 
-export default AddIngredientLists;
+export default EditIngredientList;
