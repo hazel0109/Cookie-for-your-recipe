@@ -9,12 +9,12 @@ const RecipeSteps = memo(() => {
 
   const RecipeMaker =
     recipe &&
-    recipe.instructions.map((step) => {
+    recipe.instructions.map((step, i) => {
       return (
         <Steps
           key={step.id}
           id={step.id}
-          index={step.id}
+          index={i + 1}
           step={step.instruction}
         />
       );

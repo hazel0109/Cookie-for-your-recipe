@@ -1,7 +1,7 @@
 import React, { useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Ingredient from '../ingredient/ingredient';
-import EditRecipePopup from '../editRecipePopup/editRecipePopup';
+import EditRecipeForm from '../editRecipeForm/editRecipeForm';
 import { addRecipeForEdit } from '../../redux/action/editRecipeActions';
 import { ingredientListsSelector } from './ingredientLists.selector';
 
@@ -33,7 +33,7 @@ const IngredientLists = memo(() => {
           <ul className='ingredient_rows'>{IngredientMaker}</ul>
         </div>
       </div>
-      {onEdit && <EditRecipePopup cancelEdit={() => setOnEdit(false)} />}
+      {onEdit && <EditRecipeForm cancelEdit={() => setOnEdit(false)} />}
     </>
   );
 });

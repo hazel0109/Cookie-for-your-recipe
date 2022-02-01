@@ -8,6 +8,7 @@ const UpsertIngredient = memo(
         <PopupTextInput
           placeholder='ingredient'
           name='ingredient'
+          autoComplete='off'
           value={ingredientValue}
           handleChange={(e) => setIngredient(e.target.name, e.target.value, id)}
         />
@@ -22,6 +23,7 @@ const UpsertIngredient = memo(
         <PopupTextInput
           placeholder='pcs'
           name='measurement'
+          autoComplete='off'
           value={measurementValue}
           inputPosition={'right'}
           handleChange={(e) => setIngredient(e.target.name, e.target.value, id)}

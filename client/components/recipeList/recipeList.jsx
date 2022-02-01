@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import { RecipeButton } from '../common';
-import AddRecipePopup from '../addRecipePopup/addRecipePopup';
+import AddRecipeForm from '../addRecipeForm/addRecipeForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { recipeListSelector } from './recipeList.selector';
 import { updateActiveId } from '../../redux/action/recipesActions';
@@ -36,7 +36,7 @@ const RecipeList = memo(({ toggleMenu, setToggleMenu }) => {
         </button>
         {recipeList}
       </ul>
-      {click && <AddRecipePopup cancelPopup={() => setClick(false)} />}
+      {click && <AddRecipeForm cancelPopup={() => setClick(false)} />}
     </>
   );
 });

@@ -8,16 +8,17 @@ import {
   cleanEditState,
 } from '../../redux/action/editRecipeActions';
 import { deleteRecipe, updateRecipe } from '../../redux/action/recipesActions';
-import { EditRecipePopupSelector } from './editRecipePopup.selector';
+import { EditRecipeFormSelector } from './editRecipeForm.selector';
 import RecipeService from '../../services/recipesService/recipeService';
 
-const EditRecipePopup = ({ cancelEdit }) => {
+const EditRecipeForm = ({ cancelEdit }) => {
   const [addErr, setAddErr] = useState(false);
   const [postErr, setPostErr] = useState(false);
   const dispatch = useDispatch();
-  const { initRecipe } = useSelector(EditRecipePopupSelector);
+  const { initRecipe } = useSelector(EditRecipeFormSelector);
 
-  const onSaveClick = async () => {
+  const onSaveClick = async (e) => {
+    e.preventDefault();
     if (
       !initRecipe.title ||
       !initRecipe.ingredients[0] ||
@@ -36,12 +37,14 @@ const EditRecipePopup = ({ cancelEdit }) => {
     }
   };
 
-  const onCancelClick = () => {
+  const onCancelClick = (e) => {
+    e.preventDefault();
     cancelEdit();
     dispatch(cleanEditState());
   };
 
-  const onDeleteClick = async () => {
+  const onDeleteClick = async (e) => {
+    e.preventDefault();
     try {
       await RecipeService.deleteRecipes(initRecipe._id);
       cancelEdit();
@@ -54,7 +57,7 @@ const EditRecipePopup = ({ cancelEdit }) => {
 
   return (
     <div className='popupBgd'>
-      <div className='popup_container'>
+      <form className='popup_container'>
         <div className='edit_btns'>
           <EditButton
             label={'Delete'}
@@ -96,9 +99,9 @@ const EditRecipePopup = ({ cancelEdit }) => {
           <EditIngredientList />
           <EditRecipeSteps />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
 
-export default EditRecipePopup;
+export default EditRecipeForm;

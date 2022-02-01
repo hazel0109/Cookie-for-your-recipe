@@ -14,6 +14,7 @@ const PopupTextInput = ({
       type='text'
       className={`popupTextInput ${`popupTextInput--${inputPosition} ${className}`}`}
       value={value}
+      role='input'
       name={name ?? placeholder}
       placeholder={placeholder}
       onChange={handleChange}

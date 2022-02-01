@@ -40,19 +40,17 @@ const AddRecipeSteps = memo(() => {
     });
   };
 
-  const addInstructionsCallback = useCallback(
-    (value, id) =>
-      setInstructions((instructions) => {
-        return instructions.map((item) => {
-          if (item.id === id) {
-            return { ...item, instruction: value };
-          } else {
-            return item;
-          }
-        });
-      }),
-    []
-  );
+  const addInstructionsCallback = useCallback((value, id) => {
+    setInstructions((instructions) => {
+      return instructions.map((item) => {
+        if (item.id === id) {
+          return { ...item, instruction: value };
+        } else {
+          return item;
+        }
+      });
+    });
+  }, []);
 
   const totalSteps = instructions.map((step) => {
     return (

@@ -9,14 +9,14 @@ import {
   cleanPopupState,
 } from '../../redux/action/popupRecipeActions';
 import RecipeService from '../../services/recipesService/recipeService';
-import { addRecipePopupSelector } from './addRecipePopup.selector';
+import { addRecipeFormSelector } from './addRecipeForm.selector';
 
-const AddRecipePopup = ({ cancelPopup }) => {
+const AddRecipeForm = ({ cancelPopup }) => {
   const [title, setTitle] = useState('');
   const [addErr, setAddErr] = useState(false);
   const [postErr, setPostErr] = useState(false);
   const dispatch = useDispatch();
-  const { newRecipe } = useSelector(addRecipePopupSelector);
+  const { newRecipe } = useSelector(addRecipeFormSelector);
 
   useEffect(() => {
     let name = title;
@@ -26,7 +26,8 @@ const AddRecipePopup = ({ cancelPopup }) => {
     dispatch(newRecipeTitleUpdate(name));
   }, [title]);
 
-  const onClickHandler = async () => {
+  const onClickHandler = async (e) => {
+    e.preventDefault();
     if (
       !newRecipe.title ||
       !newRecipe.ingredients[0] ||
@@ -46,14 +47,15 @@ const AddRecipePopup = ({ cancelPopup }) => {
     }
   };
 
-  const onCancelClick = () => {
+  const onCancelClick = (e) => {
+    e.preventDefault();
     cancelPopup();
     dispatch(cleanPopupState());
   };
 
   return (
     <div className='popupBgd'>
-      <div className='popup_container'>
+      <form className='popup_container'>
         <div className='popup_btns'>
           <PopupButton
             label={'Cancel'}
@@ -88,9 +90,9 @@ const AddRecipePopup = ({ cancelPopup }) => {
           <AddIngredientLists />
           <AddRecipeSteps />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
 
-export default AddRecipePopup;
+export default AddRecipeForm;
